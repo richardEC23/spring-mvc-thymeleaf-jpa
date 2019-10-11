@@ -16,7 +16,10 @@ public class User {
      
     @NotBlank(message = "Name is mandatory")
     private String name;
-     
+    
+    @NotBlank(message = "Last name is mandatory")
+    private String lastName;
+    
     @NotBlank(message = "Email is mandatory")
     @Email
     private String email;
@@ -47,7 +50,15 @@ public class User {
 
 	@Override
 	public String toString() {
-		return String.format("User [id=%s, name=%s, email=%s]", id, name, email);
+		return String.format("User [id=%s, name=%s, lastName=%s ,email=%s]", id, name, lastName,email);
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
     
 
