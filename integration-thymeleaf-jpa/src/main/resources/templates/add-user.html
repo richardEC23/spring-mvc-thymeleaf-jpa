@@ -9,13 +9,13 @@
 <title>Add</title>
 </head>
 <body>
-	<form action="#" th:action="@{/adduser}" th:object="${user}"
+	<form class="needs-validation was-validated" novalidate action="#" th:action="@{/adduser}" th:object="${user}"
 		method="post">
 		<div class="form-row">
     		<div class="col-md-4 mb-3">
 				<label for="name">Name</label> 
 				<input type="text" th:field="*{name}"
-					id="name" placeholder="Name" class="form-control"> 
+					id="name" placeholder="Name" class="form-control" required> 
 				<div class="invalid-feedback"
 					th:if="${#fields.hasErrors('name')}" 
 					th:errors="*{name}">
@@ -26,21 +26,40 @@
     		<div class="col-md-4 mb-3">	
 			<label
 			for="lastName">Last name</label> <input class="form-control" type="text"
-			th:field="*{lastName}" id="lastName" placeholder="Apellido">
+			th:field="*{lastName}" id="lastName" placeholder="Apellido"required>
 		<div class="invalid-feedback" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
 		</div>
 		</div>
 		<div class="form-row">
     		<div class="col-md-4 mb-3">
-		<label for="email">Email</label> <input class="form-control" type="text"
-			th:field="*{email}" id="email" placeholder="Email"> <div
+		<label for="email">Email</label> <input class="form-control" type="email"
+			th:field="*{email}" id="email" placeholder="Email" required> <div
 			th:if="${#fields.hasErrors('email')}" class="invalid-feedback" th:errors="*{email}"></div> 
 		</div>
 		</div>
 			
-			<input class="btn btn-success"
-			type="submit" value="Add User">
+			<button class="btn btn-primary" type="submit">Add User</button>
 	</form>
+	<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
