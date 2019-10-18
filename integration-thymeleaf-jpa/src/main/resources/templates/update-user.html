@@ -6,16 +6,38 @@
 <title>Update</title>
 </head>
 <body>
-	<form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Name">
-    <label for="lastName">Last name</label>
-    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Apellido">
-    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-    <label for="email">Email</label>
-    <input type="text" th:field="*{email}" id="email" placeholder="Email">
-    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-    <input type="submit" value="Update User">   
+	<form class="needs-validation was-validated" novalidate action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <div class="form-row">
+    		<div class="col-md-4 mb-3">	
+    			<label for="name">Name</label>
+    			<input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Name" required>
+    			<div class="invalid-feedback"
+					th:if="${#fields.hasErrors('name')}" 
+					th:errors="*{name}">
+				</div> 
+		</div>
+		</div>
+	<div class="form-row">
+    		<div class="col-md-4 mb-3">
+    			<label for="lastName">Last name</label>
+    			<input class="form-control" type="text" th:field="*{lastName}" id="lastName" placeholder="Apellido" required>
+    			<div class="invalid-feedback"
+					th:if="${#fields.hasErrors('lastName')}" 
+					th:errors="*{lastName}">
+				</div> 
+		</div>
+		</div>
+	<div class="form-row">
+    		<div class="col-md-4 mb-3">
+    			<label for="email">Email</label>
+    			<input class="form-control" type="email" th:field="*{email}" id="email" placeholder="Email" required>
+    			<div class="invalid-feedback"
+					th:if="${#fields.hasErrors('email')}" 
+					th:errors="*{email}">
+				</div> 
+		</div>
+		</div>
+    <button class="btn btn-primary" type="submit">Update User</button>   
 </form>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
